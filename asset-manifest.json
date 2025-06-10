@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/PinTripz.com/static/css/main.b1e3a2e1.css",
+    "main.js": "/PinTripz.com/static/js/main.bc4c91a4.js",
+    "static/js/952.61591916.chunk.js": "/PinTripz.com/static/js/952.61591916.chunk.js",
+    "static/media/header.jpg": "/PinTripz.com/static/media/header.bea00b4c28d4116c1e1e.jpg",
+    "static/media/InterVariable-Italic.woff2": "/PinTripz.com/static/media/InterVariable-Italic.e295f70fe3e2df296c7b.woff2",
+    "static/media/InterVariable.woff2": "/PinTripz.com/static/media/InterVariable.a0e477f2f1f9d2376fde.woff2",
+    "static/media/air-france-logo.png": "/PinTripz.com/static/media/air-france-logo.7e0e4a2dd9be91387e73.png",
+    "static/media/logo.png": "/PinTripz.com/static/media/logo.6b5ded0c3bf54db51fbe.png",
+    "static/media/lufthansa.png": "/PinTripz.com/static/media/lufthansa.30a1d73c48da47762ab9.png",
+    "index.html": "/PinTripz.com/index.html",
+    "main.b1e3a2e1.css.map": "/PinTripz.com/static/css/main.b1e3a2e1.css.map",
+    "main.bc4c91a4.js.map": "/PinTripz.com/static/js/main.bc4c91a4.js.map",
+    "952.61591916.chunk.js.map": "/PinTripz.com/static/js/952.61591916.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1e3a2e1.css",
+    "static/js/main.bc4c91a4.js"
+  ]
+}
