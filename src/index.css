@@ -1,0 +1,1212 @@
+body {
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  max-width: 1250px;
+  overflow-x: clip;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+:root {
+  --input-color: rgb(242, 230, 248);
+}
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  height: 500px;
+  background-image: url(./photos/header.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 0 0 10px 10px;
+}
+.info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: -11rem;
+  margin-top: -20rem;
+  background-color: rgba(36, 158, 117, 0.8);
+}
+.info p {
+  color: white;
+}
+.info p:nth-child(1) {
+  margin-left: 1.5rem;
+}
+.info p:nth-child(3) {
+  margin-left: 50rem;
+}
+.info p:nth-child(2) {
+  margin-left: 1rem;
+  border-left: 1px solid;
+  padding-left: 1rem;
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  gap: 1rem;
+  background-color: rgba(36, 158, 117, 0.8);
+  position: relative;
+  border-top: 1px solid rgba(222, 222, 222, 0.5);
+  margin-top: 1rem;
+}
+.navbar-logo {
+  height: 75px;
+  position: absolute;
+  left: 2%;
+  border-radius: 10px;
+}
+.navbar h1 {
+  position: absolute;
+  left: 10%;
+}
+.navbar ul {
+  /* width: 80%; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 80px;
+  padding: 0;
+  margin: 0;
+  margin-left: 20rem;
+}
+.navbar ul li {
+  list-style: none;
+  font-size: 24px;
+
+  /* padding: 7px; */
+}
+.navbar a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+/* .navbar ul li:first-child {
+  border-bottom: 1px solid;
+} */
+/* .navbar ul li:hover {
+  background-color: red;
+} */
+.navbar-link {
+  position: relative;
+}
+.navbar-link::after {
+  content: "";
+  height: 2px;
+  width: 10%;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.navbar-link:hover::after {
+  opacity: 1;
+  width: 100%;
+  left: 0;
+}
+.navbar-link-active {
+  position: relative;
+}
+.navbar-link-active::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  opacity: 1;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.searchbar {
+  width: 90%;
+  padding: 5rem 5rem 2rem 5rem;
+  /* position: absolute;
+  top: 70%; */
+  margin-top: -13rem;
+  align-self: center;
+  /* margin: auto; */
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 3px 3px 5px 5px rgba(150, 150, 150, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  transition: all 0.3s;
+  /* position: relative; */
+  z-index: 999;
+  position: relative;
+}
+
+.searchbar__from {
+  background-color: var(--input-color);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin-right: 2rem;
+  height: 7.5rem;
+  /* height: 75%;
+  width: 25%; */
+  padding: 13px;
+  border-radius: 10px;
+  position: relative;
+  width: 250px;
+}
+
+.searchbar__from-icon {
+  position: absolute;
+  height: 24px;
+  right: 13%;
+  top: 17%;
+}
+.searchbar__from p {
+  /* position: absolute;
+  top: -1%; */
+  color: lightslategrey;
+  font-size: 16px;
+  margin-bottom: 6px;
+  margin-left: 2px;
+}
+.searchbar__from input {
+  /* background-color: var(--input-color); */
+  border-style: none;
+  border-radius: 3px;
+  background-color: rgb(247, 247, 247);
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  width: 70%;
+  max-width: 200px;
+  overflow: visible;
+  padding: 0.3rem;
+  margin-top: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.searchbar__from h3 {
+  color: rgb(63, 70, 77);
+  font-weight: 500;
+  margin-left: 2px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  width: 80%;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 24px;
+}
+.searchbar__from input::placeholder {
+  color: black;
+  font-weight: 600;
+}
+.searchbar__from input:focus {
+  border-style: none;
+  outline: none;
+}
+
+.searchbar__mid-icon {
+  background-color: var(--input-color);
+  color: rgb(173, 82, 173);
+  padding: 0.6rem;
+  border-radius: 50%;
+  border: 4px solid white;
+  position: absolute;
+  z-index: 999;
+  left: 21.7%;
+}
+.repeat-icon {
+  height: 1.2rem;
+}
+.searchbar__to {
+  background-color: var(--input-color);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin-right: 2rem;
+  height: 7.5rem;
+  /* height: 75%;
+  width: 25%; */
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;
+  position: relative;
+}
+
+.searchbar__to-icon {
+  position: absolute;
+  height: 24px;
+  right: 13%;
+  top: 17%;
+}
+.searchbar__to p {
+  /* position: absolute;
+  top: -1%; */
+  color: lightslategrey;
+  font-size: 16px;
+  margin-bottom: 6px;
+  margin-left: 2px;
+}
+.searchbar__to input {
+  border-style: none;
+  border-radius: 3px;
+  background-color: rgb(247, 247, 247);
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+  width: 70%;
+  overflow: visible;
+  padding: 0.3rem;
+  margin-top: 1rem;
+}
+.searchbar__to h3 {
+  color: rgb(63, 70, 77);
+  font-weight: 500;
+  margin-left: 2px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  width: 80%;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 24px;
+}
+.searchbar__to input::placeholder {
+  color: black;
+  font-weight: 600;
+}
+
+.searchbar__to input:focus {
+  border-style: none;
+  outline: none;
+}
+.date-icon {
+  z-index: 999;
+  height: 24px;
+  position: absolute;
+}
+.searchbar__date {
+  background-color: var(--input-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+  height: 7.5rem;
+  width: 20rem;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+.date-icon {
+  z-index: 999;
+  height: 24px;
+  position: absolute;
+  left: 40%;
+}
+
+.searchbar__start p {
+  color: lightslategrey;
+  font-size: 16px;
+  margin-bottom: 6px;
+  margin-left: 2px;
+}
+.searchbar__start h3 {
+  color: rgb(63, 70, 77);
+  font-weight: 500;
+  margin-left: 2px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+.searchbar__end-none {
+  opacity: 0;
+  transition: all 0.07s;
+}
+.searchbar__end p {
+  color: lightslategrey;
+  font-size: 16px;
+  margin-bottom: 6px;
+  margin-left: 2px;
+}
+.searchbar__end h3 {
+  color: rgb(63, 70, 77);
+  font-weight: 500;
+  margin-left: 2px;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+.searchbar__passenger {
+  background-color: var(--input-color);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  height: 7.5rem;
+  width: 12rem;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+.searchbar__passenger-title {
+  color: lightslategrey;
+  font-size: 16px;
+  margin-left: 2px;
+  margin-bottom: 4px;
+  position: absolute;
+  top: -8%;
+}
+
+.searchbar__passenger-name {
+  color: black;
+  font-weight: 600;
+  font-size: 18px;
+  width: 150px;
+  position: absolute;
+  top: 9%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.searchbar__passenger-name span {
+  width: 22px;
+}
+.searchbar__passenger-name p {
+}
+.searchbar__passenger-classname {
+  font-weight: 500;
+  margin-left: 2px;
+  font-size: 14px;
+  position: absolute;
+  top: 60%;
+}
+.searchbar__button {
+  /* position: absolute;
+  left: 45%;
+  top: 78%; */
+  border-style: none;
+  cursor: pointer;
+  padding: 10px 22px;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+  font-size: 18px;
+  transition: all 0.1s;
+  box-shadow: 5px 5px 7px rgba(150, 150, 150, 0.8);
+}
+.searchbar__button:hover {
+  background-color: rgb(3, 164, 3);
+}
+.searchbar__button:active {
+  top: 79%;
+}
+
+.calendar-oneWay {
+  transition: all 0.3s;
+}
+.calendar-text {
+  transition: 0.2s;
+  font-size: 18px;
+  margin-left: -6px;
+  /* overflow: hidden; */
+}
+/* .calendar-roundTrip {
+  margin-top: 2rem;
+  transition: all 0.3s;
+} */
+.searchbar__oneway {
+  position: absolute;
+  top: 10%;
+  right: 18%;
+  background-color: transparent;
+  border-style: none;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+.active {
+  color: blueviolet;
+}
+
+.searchbar__roundtrip {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  background-color: transparent;
+  border-style: none;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.searchbar__multicity {
+  position: absolute;
+  top: 10%;
+  right: 2%;
+  background-color: transparent;
+  border-style: none;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.passenger__icon {
+  position: absolute;
+  right: 15%;
+  top: 35%;
+  height: 25px;
+  cursor: pointer;
+  transition: all 0.4s;
+  transform: rotate(180deg);
+}
+.passenger__icon-active {
+  position: absolute;
+  right: 15%;
+  top: 35%;
+  height: 25px;
+  cursor: pointer;
+  /* transform: rotate(180deg); */
+  transition: all 0.4s;
+}
+
+.passengers {
+  background-color: white;
+  border: 1px solid rgb(218, 216, 216);
+  border-radius: 5px;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  right: 47%;
+  top: 67%;
+  transition: all 0.4s;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.visible {
+  opacity: 1;
+  width: 350px;
+  height: 500px;
+  z-index: 99999999;
+  transition: all 0.4s;
+}
+
+.passengers__type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.passengers__type-title {
+  color: blueviolet;
+  font-size: 18px;
+  margin-left: 15px;
+}
+.passengers__adult {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.passengers__adult-info {
+  width: 150px;
+}
+.passengers__adult p {
+  font-size: 24px;
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.passengers__adult h2 {
+  color: rgb(165, 162, 162);
+  font-size: 16px;
+  font-weight: 400;
+}
+.passengers__adult h3 {
+  color: rgb(89, 88, 88);
+  font-size: 12px;
+}
+
+.passengers__children {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.passengers__children-info {
+  width: 150px;
+}
+.passengers__children p {
+  font-size: 24px;
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.passengers__children h2 {
+  color: rgb(165, 162, 162);
+  font-size: 16px;
+  font-weight: 400;
+}
+.passengers__children h3 {
+  color: rgb(89, 88, 88);
+  font-size: 12px;
+}
+
+.passengers__infant {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.passengers__infant-info {
+  width: 150px;
+}
+.passengers__infant p {
+  font-size: 24px;
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.passengers__infant h2 {
+  color: rgb(165, 162, 162);
+  font-size: 16px;
+  font-weight: 400;
+}
+.passengers__infant h3 {
+  color: rgb(89, 88, 88);
+  font-size: 12px;
+}
+
+.passengers__btns {
+  display: flex;
+  margin-left: 40px;
+}
+.passengers__btns button {
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(186, 184, 184);
+  margin-left: 3px;
+  width: 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.passengers__class {
+  border-top: 1px solid rgb(176, 173, 173);
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin-left: 1.5rem;
+  width: 300px;
+}
+.passengers__class-title {
+  color: blueviolet;
+  font-size: 18px;
+  margin-left: 15px;
+}
+.Cabin__classes {
+  margin-left: 1rem;
+}
+.Cabin__classes p {
+  width: 280px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.Cabin__classes p:hover {
+  background-color: blueviolet;
+  color: white;
+  cursor: pointer;
+}
+
+.Class__active {
+  background-color: blueviolet;
+  color: white;
+}
+
+.searchbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.add-btn {
+  position: absolute;
+  right: 1%;
+  bottom: -25%;
+  z-index: 999999;
+  cursor: pointer;
+}
+.remove-btn {
+  position: absolute;
+  right: 9%;
+  bottom: -25%;
+  z-index: 999999;
+  cursor: pointer;
+}
+
+.flights-btn {
+  position: absolute;
+  top: 7%;
+  left: 2%;
+  padding: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid blueviolet;
+  border-radius: 5px;
+}
+.hotels-btn {
+  position: absolute;
+  top: 7%;
+  left: 14.5%;
+  padding: 10px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid blueviolet;
+  border-radius: 5px;
+}
+.ticket-one {
+  /* border: 1px solid rgb(208, 208, 246); */
+  box-shadow: 1px 1px 6px 1px rgb(171, 170, 170);
+  margin-top: 2rem;
+  align-self: center;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  /* gap: 3rem; */
+  width: 80%;
+  height: 130px;
+  position: relative;
+}
+.ticket {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10rem;
+  margin: 0 1rem;
+}
+
+.ticket-airline-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ticket-airline-logo img {
+  width: 3.5rem;
+  margin-right: 1rem;
+}
+.ticket-airline-name {
+  margin-top: -1.5rem;
+}
+.ticket-airline-name h1 {
+  font-size: 1.3rem;
+  color: rgb(14, 13, 13);
+  font-weight: 500;
+}
+.ticket-airline-icons {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0rem;
+  color: rgb(92, 92, 92);
+  width: 6rem;
+  font-size: 0.9rem;
+}
+
+.ticket-transfer-info {
+  position: absolute;
+  left: 30%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ticket-departure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ticket-departure-date {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.ticket-departure-airport {
+  font-size: 0.8rem;
+  color: grey;
+  font-weight: 500;
+}
+.ticket-stops {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ticket-stops p {
+}
+.ticket-stops-city-red span {
+  color: red;
+}
+.ticket-stops-city-green span {
+  color: rgb(1, 135, 1);
+}
+.ticket-stops-line {
+  width: 270px;
+  height: 4px;
+  background-color: rgb(157, 163, 206);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ticket-stops-dot-start {
+  width: 12px;
+  height: 12px;
+  background-color: rgb(157, 163, 206);
+}
+.ticket-stops-dot-stop {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: red;
+}
+.ticket-stops-dot-end {
+  width: 12px;
+  height: 12px;
+  background-color: rgb(157, 163, 206);
+}
+.ticket-arrive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ticket-arrive-date {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.ticket-arrive-airport {
+  font-size: 0.8rem;
+  color: grey;
+  font-weight: 500;
+}
+
+.ticket-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: -1rem;
+  margin-right: 2rem;
+  width: 15%;
+}
+.ticket-price span {
+  font-size: 1.2rem;
+}
+.ticket-price p {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.ticket-price button {
+  z-index: 999;
+  cursor: pointer;
+  width: 80%;
+  height: 2rem;
+
+  /* height: 2rem; */
+  font-size: 1rem;
+  margin-top: -1rem;
+
+  border-radius: 5px;
+  border: none;
+  color: rgb(82, 108, 145);
+  background-color: rgb(186, 209, 239);
+  box-shadow: 1px 1px 6px 1px rgb(152, 164, 212);
+}
+.ticket-price button:hover {
+  background-color: rgb(183, 218, 253);
+}
+.tickets {
+  border: 1px solid rgb(208, 208, 246);
+  box-shadow: 1px 1px 6px 1px rgb(171, 170, 170);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 2rem;
+}
+.ticket-two {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 1rem 1rem;
+}
+.ticket-1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 1rem;
+}
+.ticket-transfer-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.tickets-divider {
+  width: 90%;
+  height: 1px;
+  background-color: rgb(117, 117, 194);
+}
+.ticket-2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10rem;
+  margin: 0 1rem;
+}
+.ticket-price2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 12%;
+  margin-top: -3rem;
+  margin-right: 2rem;
+}
+.ticket-price2 span {
+  font-size: 1.2rem;
+}
+.ticket-price2 p {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.ticket-price2 button {
+  z-index: 999;
+  cursor: pointer;
+  width: 110%;
+  height: 30px;
+
+  /* height: 2rem; */
+  font-size: 1rem;
+  margin-top: -1rem;
+
+  border-radius: 5px;
+  border: none;
+  color: rgb(82, 108, 145);
+  background-color: rgb(186, 209, 239);
+  box-shadow: 1px 1px 6px 1px rgb(152, 164, 212);
+}
+.ticket-price2 button:hover {
+  background-color: rgb(183, 218, 253);
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.searchbar_from-airportlist {
+  text-decoration: none;
+  list-style: none;
+  position: absolute;
+  top: 90%;
+  overflow: scroll;
+  scrollbar-width: none;
+  left: -3%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgb(120, 140, 152);
+  height: 225%;
+  width: 150%;
+  padding: 0 1rem;
+  background-color: rgb(242, 247, 251);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 3rem;
+}
+.searchbar_from-airportlist li {
+  padding: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 35ch;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.searchbar_from-airportlist li:hover {
+  background-color: rgb(228, 237, 246);
+}
+.from-airportlist-icon {
+  rotate: 60deg;
+}
+.airport-name {
+  font-size: 12px;
+}
+.airport-name:hover {
+  background-color: rgb(205, 203, 203);
+}
+.pass-info {
+  list-style: none;
+  position: absolute;
+  display: flex;
+  font-size: 14px;
+  color: rgb(129, 146, 224);
+  font-weight: 500;
+  gap: 0.6rem;
+  top: 70%;
+}
+.searchbar__from-alert {
+  position: absolute;
+  z-index: 999;
+  border-radius: 10px;
+  background-color: aliceblue;
+  left: 2%;
+  top: 80%;
+  padding: 4px 4px 4px 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(76, 77, 74);
+  transition: all 0.4s;
+}
+.alert-top {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: aliceblue;
+  border-radius: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -20%;
+}
+.searchbar__to-alert {
+  position: absolute;
+  z-index: 999;
+  border-radius: 10px;
+  background-color: aliceblue;
+  left: 28%;
+  top: 80%;
+  padding: 4px 4px 4px 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(76, 77, 74);
+  transition: all 0.4s;
+}
+.alert-to-top {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: aliceblue;
+  border-radius: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -20%;
+}
+.searchbar__date-alert {
+  position: absolute;
+  z-index: 999;
+  border-radius: 10px;
+  background-color: aliceblue;
+  left: 55%;
+  top: 80%;
+  padding: 4px 4px 4px 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(76, 77, 74);
+  transition: all 0.4s;
+}
+.alert-date-top {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: aliceblue;
+  border-radius: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -20%;
+}
+
+.ticket-loader {
+  width: 80%;
+  height: 7rem;
+  background-color: lightgray;
+  border-radius: 10px;
+  margin-top: 4rem;
+  animation: ticketLoader 1.5s infinite linear;
+}
+@keyframes ticketLoader {
+  0% {
+    background-color: whitesmoke;
+  }
+  50% {
+    background-color: lightgray;
+  }
+  100% {
+    background-color: whitesmoke;
+  }
+}
+.searchbar-weekdays {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 7.5rem;
+  position: absolute;
+  left: 7%;
+}
+.p-datepicker-calendar {
+  height: 300px;
+}
+.p-datepicker-calendar td span {
+  display: block;
+  width: 100%;
+  height: 30px; /* Adjust day cell height */
+  line-height: 30px;
+}
+
+.contact {
+  width: 80%;
+  height: 100%;
+  background-color: rgb(248, 240, 249);
+  border-radius: 10px;
+  margin-top: -16rem;
+  padding: 1rem 1rem;
+  z-index: 999;
+}
+.contact h1 {
+  font-size: 36px;
+  margin-left: 4rem;
+}
+.contact_list {
+  list-style: none;
+}
+
+.contact_list-item {
+  margin-top: 1rem;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+}
+.contact_list-item p {
+  font-weight: 500;
+}
+.contact_list-item span {
+  font-weight: 400;
+}
+.contact_list-item-icon {
+  margin-right: 2rem;
+}
+.contact_list-item:first-child .contact_list-item-icon {
+  margin-right: 1.65rem;
+}
+
+.about {
+  width: 80%;
+  height: 100%;
+  background-color: rgb(248, 240, 249);
+  border-radius: 10px;
+  margin: -11rem auto;
+  padding: 1rem 4rem;
+  z-index: 999;
+}
+.about-us {
+  border-bottom: 1px solid black;
+}
+.about-us h1 {
+  width: 22%;
+}
+.about-us-text {
+  max-width: 50rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  padding: 0;
+}
+.about-us-text-active {
+  max-width: 50rem;
+  max-height: 8rem;
+  overflow: hidden;
+  transition: all 0.3s;
+  padding: 0;
+}
+
+.about-us-icon {
+  margin-left: 1rem;
+  transition: all 0.3s;
+}
+.about-us-icon-rotate {
+  margin-left: 1rem;
+  rotate: 180deg;
+  transition: all 0.3s;
+}
+.why-choose {
+  border-bottom: 1px solid black;
+}
+.about_list-item {
+  font-weight: 500;
+  margin-top: 1rem;
+}
+.about_list-item span {
+  font-weight: 400;
+}
+
+.about_list {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.about_list-active {
+  max-height: 10rem;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.choose-icon {
+  margin-left: 1rem;
+  transition: all 0.3s;
+}
+.choose-icon-rotate {
+  margin-left: 1rem;
+  rotate: 180deg;
+  transition: all 0.3s;
+}
