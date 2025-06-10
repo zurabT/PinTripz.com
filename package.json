@@ -1,8 +1,8 @@
 {
-  "homepage": "https://zurabt.github.io/PinTripz.com",
   "name": "flight",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://zurabt.github.io/PinTripz.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
