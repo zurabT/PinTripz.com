@@ -47,7 +47,7 @@ function Ticket({
       <div className="ticket">
         <div className="ticket-airline-info">
           <div className="ticket-airline-logo">
-            <img src={airlinelogo} />
+            {/* <img src={airlinelogo} /> */}
           </div>
           <div className="ticket-airline-name">
             <h1>{airline}</h1>

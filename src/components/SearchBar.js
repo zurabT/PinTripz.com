@@ -30,6 +30,7 @@ import axios from "axios";
 import supabase from "./supabaseClient";
 import { useCallback, useEffect, useState } from "react";
 import { debounce } from "lodash";
+import { data } from "react-router-dom";
 const cache = new Map();
 
 function SearchBar({ jsonData }) {
@@ -77,135 +78,100 @@ function SearchBar({ jsonData }) {
     setShowAlertDate(false);
   }, [comp]);
 
-  const fetchLimitedAirports = async () => {
-    // Supabase fetch limit
-    // let offset = 0;
-    // let allAirports = [];
-    // let hasMore = true;
 
+
+
+
+  
+
+  const fetchLimitedAirports = async () => {
     try {
       const { data, error } = await supabase
-        .from("airportsData")
-        .select("name,iata_code")
-        .neq("iata_code", null)
-        .limit(10); // Fetch records in batches
-
+        .from("airportsdataV2")
+        .select("IATA, Airportname") 
+        .neq("IATA", null)
+        .limit(10);
+        
       if (error) {
         console.error("Error fetching limited airports data:", error);
         return;
       }
       if (data) {
+        console.log("Limited airports data:", data);
         setLimitedAirportsData(data);
       }
-
-      // hasMore = false;
-      // } else {
-      //   // allAirports = [...allAirports, ...data];
-      //   // hasMore = data.length === limit; // If less than limit, we've fetched all
-      //   // offset += limit;
-      // }
-
-      // setAirportsData(allAirports);
-      // console.log("Total records fetched:", allAirports.length);
     } catch (error) {
       console.error("Error fetching airports data:", error);
-    } finally {
     }
   };
-  useEffect(() => {
-    fetchLimitedAirports();
-  }, []);
-
+  
   const fetchAllAirports = async (searchTerm) => {
     if (!searchTerm) return;
-
+   
     if (cache.has(searchTerm)) {
       setAirportsData(cache.get(searchTerm));
       return;
     }
+    
     setIsFetching(true);
     try {
       const { data, error } = await supabase
-        .from("airportsData")
-        .select("name,iata_code")
-        .ilike("name", `%${searchTerm}%`)
-        .neq("iata_code", null)
+        .from("airportsdataV2")
+        .select("IATA, Airportname") // Include Airportname
+        .or(`Airportname.ilike.%${searchTerm}%,City.ilike.%${searchTerm}%,Country.ilike.%${searchTerm}%,IATA.ilike.%${searchTerm}%`)
+        .neq("IATA", null)
         .limit(20);
-
+  
       if (error) throw error;
-
-      setAirportsData(data);
-
-      cache.set(searchTerm, data);
+  
+      console.log("Fetched airports:", data); // Check what we're getting
+      setAirportsData(data || []);
+      cache.set(searchTerm, data || []);
     } catch (error) {
       console.error("Error fetching airports:", error);
+      setAirportsData([]);
     } finally {
       setFetchedAll(true);
+      setIsFetching(false);
     }
   };
 
-  // const fetchAllAirports = async () => {
-  //   if (fetchedAll) return;
-  //   // Supabase fetch limit
-  //   let offset = 0;
-  //   let allAirports = [];
-  //   const limit = 1000;
-  //   let hasMore = true;
 
-  //   try {
-  //     while (hasMore) {
-  //       const { data, error } = await supabase
-  //         .from("airportsData")
-  //         .select("name,iata_code")
-  //         .neq("iata_code", null)
-  //         .range(offset, offset + limit - 1); // Fetch records in batches
 
-  //       if (error) {
-  //         console.error("Error fetching airports data:", error);
-  //         hasMore = false;
-  //       } else if (data && data.length > 0) {
-  //         allAirports = [...allAirports, ...data];
-  //         hasMore = data.length === limit; // If less than limit, we've fetched all
-  //         offset += limit;
-  //       } else {
-  //         hasMore = false;
-  //       }
-  //     }
-
-  //     setAirportsData(allAirports);
-  //     setFetchedAll(true);
-  //     // console.log("Total records fetched:", allAirports.length);
-  //   } catch (error) {
-  //     console.error("Error fetching airports data:", error);
-  //   } finally {
-  //   }
-  // };
   const debouncedFetchAllAirports = useCallback(
     debounce((searchTerm) => fetchAllAirports(searchTerm), 200),
     [fetchAllAirports]
   );
+  
   useEffect(() => {
     if (searchedAirportString.trim() !== "") {
       debouncedFetchAllAirports(searchedAirportString);
     }
   }, [searchedAirportString]);
+
   useEffect(() => {
     if (searchedAirportToString.trim() !== "") {
       debouncedFetchAllAirports(searchedAirportToString);
     }
   }, [searchedAirportToString]);
+  useEffect(() => {
+    console.log("🔄 Limited airports data updated:", limitedAirportsData);
+  }, [limitedAirportsData]);
+  
+  useEffect(() => {
+    console.log("🔄 All airports data updated:", airportsData);
+  }, [airportsData]);
+  useEffect(() => {
+    const searchedAirportString = searchedAirport.join("");
 
-  // useEffect(() => {
-  //   const searchedAirportString = searchedAirport.join("");
-
-  //   if (searchedAirportString.trim() === "") {
-  //     if (!fetchedAll) {
-  //       fetchLimitedAirports();
-  //     }
-  //   } else if (!fetchedAll) {
-  //     fetchAllAirports();
-  //   }
-  // }, [searchedAirport, fetchedAll]);
+    if (searchedAirportString.trim() === "") {
+      if (!fetchedAll) {
+        fetchLimitedAirports();
+      }
+    } else if (!fetchedAll) {
+      fetchAllAirports();
+    }
+  }, [ fetchedAll]);
 
   // useEffect(() => {
   //   const searchedAirportToString = searchedAirportTo.join("");
@@ -218,7 +184,7 @@ function SearchBar({ jsonData }) {
   //     fetchAllAirports();
   //   }
   // }, [searchedAirportTo, fetchedAll]);
-
+  
   useEffect(() => {
     if (searchedAirportString.trim() === "") {
       setFilteredDataFrom(limitedAirportsData);
@@ -226,7 +192,7 @@ function SearchBar({ jsonData }) {
       setFilteredDataFrom(
         airportsData.filter((item) =>
           searchedAirport.some((departure) =>
-            item.name.toLowerCase().includes(departure.toLowerCase())
+            item.Airportname.toLowerCase().includes(departure.toLowerCase())
           )
         )
       );
@@ -240,7 +206,7 @@ function SearchBar({ jsonData }) {
       setFilteredDataTo(
         airportsData.filter((item) =>
           searchedAirportTo.some((arrive) =>
-            item.name.toLowerCase().includes(arrive.toLowerCase())
+            item.Airportname.toLowerCase().includes(arrive.toLowerCase())
           )
         )
       );
@@ -302,10 +268,10 @@ function SearchBar({ jsonData }) {
   // };
 
   const handleFlightsSearch = async () => {
-    if (!isFetching) return; // Prevent duplicate fetches
+    if (isFetching) return; // Prevent duplicate fetches
     setIsFetching(true);
     dispatch(setIsLoadingTrue());
-
+    
     try {
       if (!comp || comp.length === 0) {
         console.error("No components available for search");
@@ -333,7 +299,7 @@ function SearchBar({ jsonData }) {
         console.log(formattedDateStart, formattedDateEnd);
         const apiUrl = `https://api.flightapi.io/${
           oneWay ? "onewaytrip" : "roundtrip"
-        }/6845c6da0891e629cface0b2/${searchedAirportString}/${searchedAirportToString}/${
+        }/6925f20fe5ce9fceed349a98/${searchedAirportString}/${searchedAirportToString}/${
           oneWay
             ? formattedDateOneWay
             : `${formattedDateStart}/${formattedDateEnd}`
@@ -363,6 +329,7 @@ function SearchBar({ jsonData }) {
   const debouncedFlightsSearch = debounce(() => {
     handleFlightsSearch();
   }, 500); // Wait for 500ms before executing
+
   const flights = useSelector((state) => state.passenger.flights);
 
   const handleSearch = async () => {
@@ -407,6 +374,7 @@ function SearchBar({ jsonData }) {
     }
     console.log(searchedAirportString);
     console.log(searchedAirportToString);
+    
   };
   // const removeComps = () => {
   //   if (comp.length > 1) {
@@ -538,7 +506,7 @@ function SearchBar({ jsonData }) {
           debouncedFlightsSearch();
           // handleFlightsSearch();
           handleDate();
-
+         
           // if (!isSearchDisabled && !isSearchDisabled2 && !isSearchDisabled3) {
           //   debouncedFlightsSearch();
           //   handleDate();
@@ -550,6 +518,7 @@ function SearchBar({ jsonData }) {
           if (isSearchDisabled2) {
             setShowAlertArrive(true);
           }
+
           if (isSearchDisabled3) {
             setShowAlertDate(true);
           }
@@ -563,6 +532,7 @@ function SearchBar({ jsonData }) {
       {/* <Passengers /> */}
     </div>
   );
+
 }
 
 export default SearchBar;

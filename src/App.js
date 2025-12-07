@@ -11,6 +11,7 @@ import Loader from "./components/Loader";
 import { Routes, Route, Router } from "react-router-dom";
 import Contanct from "./components/Contanct";
 import About from "./components/About";
+import TestSupabase from "./components/TestSupabase";
 
 function Home() {
   const flights = useSelector((state) => state.passenger.flights);
@@ -108,8 +109,10 @@ function Home() {
   });
 
   return (
+    
     <div className="home">
       {/* <Header /> */}
+      
       <SearchBar />
       {isLoading && (
         <>
@@ -140,6 +143,7 @@ function Home() {
             const link = ticket.pricing_options[0].items[0].url;
 
             return (
+              
               <Ticket
                 key={ticket.id}
                 price={ticket.cheapest_price.amount}
@@ -217,9 +221,11 @@ function Home() {
             );
           })}
       {/* <Ticket2Way /> */}
+   
     </div>
   );
 }
+
 function App() {
   return (
     <div className="App">
@@ -231,6 +237,7 @@ function App() {
       </Routes>
     </div>
   );
+  
 }
 
 export default App;

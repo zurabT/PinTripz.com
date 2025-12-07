@@ -49,7 +49,7 @@ function Ticket2Way({
         <div className="ticket-1">
           <div className="ticket-airline-info">
             <div className="ticket-airline-logo">
-              <img src={airfrance} />
+              {/* <img src={airfrance} /> */}
             </div>
             <div className="ticket-airline-name">
               <h1>{airline}</h1>
@@ -119,7 +119,7 @@ function Ticket2Way({
         <div className="ticket-2">
           <div className="ticket-airline-info">
             <div className="ticket-airline-logo">
-              <img src={lufthansa} />
+              {/* <img src={lufthansa} /> */}
             </div>
             <div className="ticket-airline-name">
               <h1>{returnAirline}</h1>

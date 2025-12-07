@@ -100,14 +100,14 @@ export const From = ({ id, filteredData, setSearchedAirport }) => {
             <li
               onClick={() => {
                 dispatch(
-                  setDeparture({ id, departure: String(item.iata_code) })
+                  setDeparture({ id, departure: String(item.IATA) })
                 );
                 // setSearchedAirport(item.iata_code);
-                setAirportName(item.name);
+                setAirportName(item.Airportname);
                 setIsInputFocused(false);
               }}
               className="airport-name"
-              key={item.iata_code}
+              key={item.IATA}
             >
               <FontAwesomeIcon
                 icon={faPlaneUp}
@@ -115,7 +115,7 @@ export const From = ({ id, filteredData, setSearchedAirport }) => {
                 style={{ color: "lightslategray" }}
                 className="from-airportlist-icon"
               />{" "}
-              {item.iata_code} {item.name}
+              {item.IATA} {item.Airportname}
             </li>
           ))}
         </ul>
@@ -183,13 +183,13 @@ export const To = ({
           {filteredData.map((item) => (
             <li
               onClick={() => {
-                dispatch(setArrive({ id, arrive: String(item.iata_code) }));
+                dispatch(setArrive({ id, arrive: String(item.IATA) }));
 
-                setAirportName(item.name);
+                setAirportName(item.Airportname);
                 setIsInputFocused(false);
               }}
               className="airport-name"
-              key={item.iata_code}
+              key={item.IATA}
             >
               <FontAwesomeIcon
                 icon={faPlaneUp}
@@ -197,7 +197,7 @@ export const To = ({
                 style={{ color: "lightslategray" }}
                 className="from-airportlist-icon"
               />{" "}
-              {item.iata_code} {item.name}
+              {item.IATA} {item.Airportname}
             </li>
           ))}
         </ul>

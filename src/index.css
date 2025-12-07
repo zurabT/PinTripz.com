@@ -871,9 +871,11 @@ code {
   border-radius: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  margin: 2rem;
+  justify-content:center;
+  align-self: center;
+  width: 85%;
+  margin: 2rem 2rem 0 0;
+  
 }
 .ticket-two {
   width: 100%;
@@ -1076,6 +1078,7 @@ code {
   border-radius: 10px;
   margin-top: 4rem;
   animation: ticketLoader 1.5s infinite linear;
+  align-self: center;
 }
 @keyframes ticketLoader {
   0% {
